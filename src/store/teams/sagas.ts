@@ -29,7 +29,11 @@ function* handleSelect(action: ReturnType<typeof selectTeam>) {
     const detail = yield call(callApi, 'get', API_ENDPOINT, `/teams/${action.payload}`)
     const players = yield call(callApi, 'get', API_ENDPOINT, `/teams/${action.payload}/players`)
 
-    yield put(teamSelected({ detail, players }))
+    if (detail.error || players.error) {
+      yield put(fetchError(detail.error || players.error))
+    } else {
+      yield put(teamSelected({ detail, players }))
+    }
   } catch (err) {
     if (err instanceof Error) {
       yield put(fetchError(err.stack!))
