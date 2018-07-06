@@ -1,0 +1,9 @@
+{
+  "extends": ["tslint-config-blvd", "tslint-config-prettier"],
+  "linterOptions": {
+    "exclude": [
+      "config/**/*.js",
+      "node_modules/**/*.ts"
+    ]
+  }
+}
