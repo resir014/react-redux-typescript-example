@@ -14,8 +14,14 @@ export default () => (
           React + Redux app with TypeScript.
         </p>
         <p>
-          This project is intended as a supplement to <a>this post</a>. To demonstrate it, I created
-          a website which pulls data from the{' '}
+          This project is intended as a supplement to{' '}
+          <a
+            href="https://resir014.xyz/posts/2018/07/06/redux-4-plus-typescript/"
+            target="blank"
+            rel="noopener noreferrer"
+          >
+            this post
+          </a>. To demonstrate it, I created a website which pulls data from the{' '}
           <a href="https://docs.opendota.com" target="blank" rel="noopener noreferrer">
             OpenDota API
           </a>, and display information like professional teams, heroes, as well as top players by
