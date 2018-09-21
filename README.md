@@ -21,7 +21,7 @@ yarn
 # ...or if you'd like to use npm instead
 npm install
 
-# serve with hot reload at localhost:8000
+# serve with hot reload at localhost:1234
 yarn start
 
 # build for production
