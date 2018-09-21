@@ -3,7 +3,7 @@ import { TeamsActionTypes } from './types'
 import { fetchError, fetchSuccess, selectTeam, teamSelected } from './actions'
 import callApi from '../../utils/callApi'
 
-const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || ''
+const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || 'https://api.opendota.com'
 
 function* handleFetch() {
   try {

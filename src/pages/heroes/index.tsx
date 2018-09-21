@@ -29,7 +29,7 @@ interface PropsFromDispatch {
 // Combine both state + dispatch props - as well as any props we want to pass - in a union type.
 type AllProps = PropsFromState & PropsFromDispatch & ConnectedReduxProps
 
-const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || ''
+const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || 'https://api.opendota.com'
 
 class HeroesIndexPage extends React.Component<AllProps> {
   public componentDidMount() {
