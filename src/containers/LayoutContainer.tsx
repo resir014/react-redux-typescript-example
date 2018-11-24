@@ -1,9 +1,10 @@
 import * as React from 'react'
-import { connect, Dispatch } from 'react-redux'
+import { connect } from 'react-redux'
 
 import { ApplicationState } from '../store'
 import { ThemeColors } from '../store/layout'
 import * as layoutActions from '../store/layout/actions'
+import { Dispatch } from 'redux';
 
 // Now here is an example of creating container components.
 //

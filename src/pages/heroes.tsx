@@ -12,7 +12,7 @@ import { Hero } from '../store/heroes/types'
 interface PropsFromState {
   loading: boolean
   data: Hero[]
-  errors: string
+  errors?: string
 }
 
 // Combine both state + dispatch props - as well as any props we want to pass - in a union type.

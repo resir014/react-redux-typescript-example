@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { connect, Dispatch } from 'react-redux'
+import { connect } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
 import styled, { Theme } from '../../utils/styled'
 
@@ -15,12 +15,13 @@ import { selectTeam, clearSelected } from '../../store/teams/actions'
 import { darken, transparentize } from '../../../node_modules/polished'
 import { Themed } from '../../../node_modules/react-emotion'
 import DataTable from '../../components/layout/DataTable'
+import { Dispatch } from 'redux';
 
 // Separate state props + dispatch props to their own interfaces.
 interface PropsFromState {
   loading: boolean
   selected?: TeamSelectedPayload
-  errors: string
+  errors?: string
 }
 
 interface PropsFromDispatch {
@@ -29,7 +30,7 @@ interface PropsFromDispatch {
 }
 
 interface RouteParams {
-  id: number
+  id: string
 }
 
 // Combine both state + dispatch props - as well as any props we want to pass - in a union type.
@@ -140,7 +141,7 @@ const mapStateToProps = ({ teams }: ApplicationState) => ({
 // mapDispatchToProps is especially useful for constraining our actions to the connected component.
 // You can access these via `this.props`.
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  selectTeam: (team_id: number) => dispatch(selectTeam(team_id)),
+  selectTeam: (team_id: string) => dispatch(selectTeam(team_id)),
   clearSelected: () => dispatch(clearSelected())
 })
 

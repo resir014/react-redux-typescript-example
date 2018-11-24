@@ -14,6 +14,8 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true
-  }
+    "noUnusedLocals": true,
+    "skipLibCheck": true
+  },
+  "include": ["src"]
 }
