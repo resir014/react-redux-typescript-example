@@ -9,6 +9,7 @@
 # production - note this is different from webpack
 /dist
 /.cache
+/build
 
 # misc
 .DS_Store

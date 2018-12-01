@@ -10,7 +10,7 @@ import { ApplicationState, ConnectedReduxProps } from '../store'
 // Separate state props + dispatch props to their own interfaces.
 interface PropsFromState {
   loading: boolean
-  errors: string
+  errors?: string
 }
 
 // Combine both state + dispatch props - as well as any props we want to pass - in a union type.

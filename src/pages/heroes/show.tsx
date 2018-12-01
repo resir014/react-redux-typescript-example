@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { connect, Dispatch } from 'react-redux'
+import { connect } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
 
 import Page from '../../components/layout/Page'
@@ -14,12 +14,13 @@ import LoadingOverlayInner from '../../components/data/LoadingOverlayInner'
 import LoadingSpinner from '../../components/data/LoadingSpinner'
 import { darken } from 'polished'
 import { Themed } from 'react-emotion'
+import { Dispatch } from 'redux';
 
 // Separate state props + dispatch props to their own interfaces.
 interface PropsFromState {
   loading: boolean
   data: Hero[]
-  errors: string
+  errors?: string
 }
 
 // We can use `typeof` here to map our dispatch types to the props, like so.

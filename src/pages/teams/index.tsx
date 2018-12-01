@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
-import { connect, Dispatch } from 'react-redux'
+import { connect } from 'react-redux'
 import moment from 'moment'
 
 import styled from '../../utils/styled'
@@ -14,12 +14,13 @@ import LoadingSpinner from '../../components/data/LoadingSpinner'
 import { ApplicationState, ConnectedReduxProps } from '../../store'
 import { Team } from '../../store/teams/types'
 import { fetchRequest } from '../../store/teams/actions'
+import { Dispatch } from 'redux';
 
 // Separate state props + dispatch props to their own interfaces.
 interface PropsFromState {
   loading: boolean
   data: Team[]
-  errors: string
+  errors?: string
 }
 
 // We can use `typeof` here to map our dispatch types to the props, like so.
