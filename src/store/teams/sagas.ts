@@ -1,7 +1,7 @@
 import { all, call, fork, put, takeEvery, takeLatest } from 'redux-saga/effects'
 import { TeamsActionTypes } from './types'
 import { fetchError, fetchSuccess, selectTeam, teamSelected } from './actions'
-import callApi from '../../utils/callApi'
+import { callApi } from '../../utils/api'
 
 const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || 'https://api.opendota.com'
 

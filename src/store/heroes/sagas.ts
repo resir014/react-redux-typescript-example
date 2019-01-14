@@ -1,7 +1,7 @@
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects'
 import { HeroesActionTypes } from './types'
 import { fetchError, fetchSuccess } from './actions'
-import callApi from '../../utils/callApi'
+import { callApi } from '../../utils/api'
 
 const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || 'https://api.opendota.com'
 
