@@ -3,9 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "babel-plugin-emotion": "^9.2.11",
     "connected-react-router": "^4.5.0",
-    "create-react-app-parcel-typescript": "0.0.5",
     "dotenv-expand": "^4.2.0",
     "emotion": "^9.2.12",
     "emotion-theming": "^9.2.9",
@@ -26,10 +24,9 @@
     "typesafe-actions": "^2.0.4"
   },
   "scripts": {
-    "start": "react-scripts-parcel start",
-    "build": "react-scripts-parcel build",
-    "test": "react-scripts-parcel test --env=jsdom",
-    "eject": "react-scripts-parcel eject"
+    "start": "parcel public/index.html",
+    "build": "parcel build public/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "browserslist": {
     "development": [
@@ -45,13 +42,17 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
     "@types/history": "^4.7.2",
     "@types/node": "^10.12.10",
     "@types/react": "^16.6.0",
     "@types/react-dom": "^16.0.10",
     "@types/react-redux": "^6.0.10",
     "@types/react-router-dom": "^4.3.1",
-    "babel-core": "^6.26.3",
+    "babel-plugin-emotion": "^9.2.11",
+    "parcel-bundler": "^1.11.0",
     "tslint": "^5.11.0",
     "tslint-config-blvd": "^1.2.1",
     "typescript": "^3.1.3"

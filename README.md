@@ -8,7 +8,7 @@ React + Redux app with TypeScript.
 
 This project is intended as a supplement to [this post](https://resir014.xyz/posts/2018/07/06/redux-4-plus-typescript/). To demonstrate it, I created a website which pulls data from the [OpenDota API](https://docs.opendota.com), and display information like professional teams, heroes, as well as top players by hero. This will also demonstrate how to structure your stores for each feature/module in a Redux-enabled app.
 
-This project was bootstrapped with <http://github.com/sw-yx/create-react-app-parcel>.
+This project was bootstrapped with [Parcel](https://parceljs.org/).
 
 ## Getting started
 
