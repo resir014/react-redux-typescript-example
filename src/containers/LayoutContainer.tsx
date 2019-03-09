@@ -1,10 +1,9 @@
 import * as React from 'react'
-import { connect } from 'react-redux'
+import { ReactReduxContext } from 'react-redux'
 
 import { ApplicationState } from '../store'
 import { ThemeColors } from '../store/layout'
 import * as layoutActions from '../store/layout/actions'
-import { Dispatch } from 'redux';
 
 // Now here is an example of creating container components.
 //
@@ -14,49 +13,48 @@ import { Dispatch } from 'redux';
 //
 // See how this works at `./src/components/Header`
 
-// Separate state props + dispatch props to their own interfaces.
-
-// Props passed from mapStateToProps
-interface PropsFromState {
+// Redux-specific props.
+interface LayoutContainerProps {
   theme: ThemeColors
+  setTheme: (theme: ThemeColors) => void
 }
 
-// Props passed from mapDispatchToProps
-interface PropsFromDispatch {
-  setTheme: typeof layoutActions.setTheme
+// Wrapper props for render/children callback.
+interface LayoutContainerRenderProps {
+  render?: (props: LayoutContainerProps) => React.ReactNode
+  children?: (props: LayoutContainerProps) => React.ReactNode
 }
 
-// Component-specific props.
-interface OtherProps {
-  children: (props: LayoutContainerProps) => React.ReactNode
+const LayoutContainer: React.FC<LayoutContainerRenderProps> = ({ render, children }) => {
+  // Here we do a bit of a hack. Since the latest react-redux typings broke the
+  // "children-props-as-redux-container" approach on the previous version of this guide,
+  // we use the newly-introduced `ReactReduxContext` consumer to get our state, and map the
+  // `theme` state and the `setTheme` action call inside it.
+  return (
+    <ReactReduxContext.Consumer>
+      {({ store }) => {
+        // Use the standard `store.getState()` redux function to get the root state, and cast
+        // it with our ApplicationState type.
+        const state: ApplicationState = store.getState()
+
+        // Obtain the `theme` state and the `setTheme` action.
+        // Note that per Redux conventions actions MUST be wrapped inside `store.dispatch()`
+        const theme = state.layout.theme
+        const setTheme = (theme: ThemeColors) => store.dispatch(layoutActions.setTheme(theme))
+
+        // Create a render/children props wrapper with the above variables set as a callback.
+        if (render) {
+          return render({ theme, setTheme })
+        }
+
+        if (children) {
+          return children({ theme, setTheme })
+        }
+
+        return null
+      }}
+    </ReactReduxContext.Consumer>
+  )
 }
 
-// Combine both state + dispatch props - as well as any props we want to pass - in a union type.
-type LayoutContainerProps = PropsFromState & PropsFromDispatch
-
-class LayoutContainer extends React.Component<LayoutContainerProps & OtherProps> {
-  public render() {
-    const { children, ...rest } = this.props
-
-    return children({ ...rest })
-  }
-}
-
-// It's usually good practice to only include one context at a time in a connected component.
-// Although if necessary, you can always include multiple contexts. Just make sure to
-// separate them from each other to prevent prop conflicts.
-const mapStateToProps = ({ layout }: ApplicationState) => ({
-  theme: layout.theme
-})
-
-// Mapping our action dispatcher to props is especially useful when creating container components.
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  setTheme: (theme: ThemeColors) => dispatch(layoutActions.setTheme(theme))
-})
-
-// Now let's connect our component!
-// With redux v4's improved typings, we can finally omit generics here.
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(LayoutContainer)
+export default LayoutContainer

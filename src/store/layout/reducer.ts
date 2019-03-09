@@ -2,7 +2,7 @@ import { Reducer } from 'redux'
 import { LayoutState, LayoutActionTypes } from './types'
 
 // Type-safe initialState!
-const initialState: LayoutState = {
+export const initialState: LayoutState = {
   theme: 'light'
 }
 

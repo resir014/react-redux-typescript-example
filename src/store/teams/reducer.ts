@@ -2,7 +2,7 @@ import { Reducer } from 'redux'
 import { TeamsState, TeamsActionTypes } from './types'
 
 // Type-safe initialState!
-const initialState: TeamsState = {
+export const initialState: TeamsState = {
   data: [],
   errors: undefined,
   selected: undefined,

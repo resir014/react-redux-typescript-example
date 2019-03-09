@@ -2,7 +2,7 @@ import { Reducer } from 'redux'
 import { HeroesState, HeroesActionTypes } from './types'
 
 // Type-safe initialState!
-const initialState: HeroesState = {
+export const initialState: HeroesState = {
   data: [],
   errors: undefined,
   loading: false
