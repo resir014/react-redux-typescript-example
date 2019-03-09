@@ -13,15 +13,13 @@ import * as layoutActions from '../store/layout/actions'
 //
 // See how this works at `./src/components/Header`
 
-// Separate state props + dispatch props to their own interfaces.
-
-// Component-specific props.
+// Redux-specific props.
 interface LayoutContainerProps {
   theme: ThemeColors
   setTheme: (theme: ThemeColors) => void
 }
 
-// Combine both state + dispatch props - as well as any props we want to pass - in a union type.
+// Wrapper props for render/children callback.
 interface LayoutContainerRenderProps {
   render?: (props: LayoutContainerProps) => React.ReactNode
   children?: (props: LayoutContainerProps) => React.ReactNode
@@ -59,6 +57,4 @@ const LayoutContainer: React.FC<LayoutContainerRenderProps> = ({ render, childre
   )
 }
 
-// Now let's connect our component!
-// With redux v4's improved typings, we can finally omit generics here.
 export default LayoutContainer
