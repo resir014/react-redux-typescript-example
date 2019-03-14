@@ -14,7 +14,7 @@ import LoadingOverlayInner from '../../components/data/LoadingOverlayInner'
 import LoadingSpinner from '../../components/data/LoadingSpinner'
 import { darken } from 'polished'
 import { Themed } from 'react-emotion'
-import { Dispatch } from 'redux';
+import { Dispatch } from 'redux'
 
 // Separate state props + dispatch props to their own interfaces.
 interface PropsFromState {
@@ -121,9 +121,9 @@ const mapStateToProps = ({ heroes }: ApplicationState) => ({
 
 // mapDispatchToProps is especially useful for constraining our actions to the connected component.
 // You can access these via `this.props`.
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  fetchRequest: () => dispatch(fetchRequest())
-})
+const mapDispatchToProps = {
+  fetchRequest
+}
 
 // Now let's connect our component!
 // With redux v4's improved typings, we can finally omit generics here.
