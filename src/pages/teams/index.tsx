@@ -14,7 +14,7 @@ import LoadingSpinner from '../../components/data/LoadingSpinner'
 import { ApplicationState, ConnectedReduxProps } from '../../store'
 import { Team } from '../../store/teams/types'
 import { fetchRequest } from '../../store/teams/actions'
-import { Dispatch } from 'redux';
+import { Dispatch } from 'redux'
 
 // Separate state props + dispatch props to their own interfaces.
 interface PropsFromState {
