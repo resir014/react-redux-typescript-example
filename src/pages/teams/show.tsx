@@ -15,7 +15,7 @@ import { selectTeam, clearSelected } from '../../store/teams/actions'
 import { darken, transparentize } from '../../../node_modules/polished'
 import { Themed } from '../../../node_modules/react-emotion'
 import DataTable from '../../components/layout/DataTable'
-import { Dispatch } from 'redux';
+import { Dispatch } from 'redux'
 
 // Separate state props + dispatch props to their own interfaces.
 interface PropsFromState {
@@ -140,10 +140,10 @@ const mapStateToProps = ({ teams }: ApplicationState) => ({
 
 // mapDispatchToProps is especially useful for constraining our actions to the connected component.
 // You can access these via `this.props`.
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  selectTeam: (team_id: string) => dispatch(selectTeam(team_id)),
-  clearSelected: () => dispatch(clearSelected())
-})
+const mapDispatchToProps = {
+  selectTeam,
+  clearSelected
+}
 
 // Now let's connect our component!
 // With redux v4's improved typings, we can finally omit generics here.

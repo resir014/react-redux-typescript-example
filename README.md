@@ -2,7 +2,7 @@
 
 > Demonstrating the common patterns when using React, Redux v4, and TypeScript.
 
-Welcome to the Redux 4 + TypeScript 2.9 example! This example site shows you the ideal
+Welcome to the Redux 4 + TypeScript 3.3 example! This example site shows you the ideal
 project structure, recommended libraries, as well as design pattern on writing type-safe
 React + Redux app with TypeScript.
 

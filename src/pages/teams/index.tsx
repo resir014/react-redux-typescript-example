@@ -14,7 +14,7 @@ import LoadingSpinner from '../../components/data/LoadingSpinner'
 import { ApplicationState, ConnectedReduxProps } from '../../store'
 import { Team } from '../../store/teams/types'
 import { fetchRequest } from '../../store/teams/actions'
-import { Dispatch } from 'redux';
+import { Dispatch } from 'redux'
 
 // Separate state props + dispatch props to their own interfaces.
 interface PropsFromState {
@@ -109,9 +109,9 @@ const mapStateToProps = ({ teams }: ApplicationState) => ({
 
 // mapDispatchToProps is especially useful for constraining our actions to the connected component.
 // You can access these via `this.props`.
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  fetchRequest: () => dispatch(fetchRequest())
-})
+const mapDispatchToProps = {
+  fetchRequest
+}
 
 // Now let's connect our component!
 // With redux v4's improved typings, we can finally omit generics here.
