@@ -7,7 +7,7 @@
     "dotenv-expand": "^4.2.0",
     "emotion": "^9.2.12",
     "emotion-theming": "^9.2.9",
-    "history": "^4.7.2",
+    "history": "^4.9.0",
     "http2": "^3.3.7",
     "moment": "^2.22.2",
     "polished": "^2.3.0",
