@@ -8,10 +8,14 @@
       "jsx": true
     }
   },
+  "plugins": ["jest"],
   "settings": {
     "react": {
       "version": "detect"
     }
+  },
+  "env": {
+    "jest/globals": true
   },
   "rules": {
     "max-len": ["error", { "code": 140, "ignoreUrls": true }],
@@ -38,6 +42,13 @@
       {
         "forbid": [{ "char": ">", "alternatives": ["&gt;"] }, { "char": "}", "alternatives": "&#125;" }]
       }
-    ]
+    ],
+
+    /* Jest rules*/
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error"
   }
 }

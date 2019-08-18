@@ -8,6 +8,8 @@
     "dotenv-expand": "^4.2.0",
     "emotion": "^9.2.12",
     "emotion-theming": "^9.2.9",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "history": "^4.7.2",
     "http2": "^3.3.7",
     "moment": "^2.22.2",
@@ -30,7 +32,8 @@
     "start": "parcel public/index.html",
     "build": "parcel build public/index.html",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --watch",
+    "test:ci": "set CI=1 && jest"
   },
   "browserslist": {
     "development": [
@@ -49,7 +52,10 @@
     "@babel/core": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
+    "@types/enzyme": "^3.10.3",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/history": "^4.7.2",
+    "@types/jest": "^24.0.17",
     "@types/node": "^10.12.10",
     "@types/react": "^16.8.7",
     "@types/react-dom": "^16.8.2",
@@ -61,9 +67,12 @@
     "eslint": "^5.0.0",
     "eslint-config-blvd": "^0.2.0",
     "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-jest": "^22.15.1",
     "eslint-plugin-prettier": "^3.1.0",
+    "jest": "^24.9.0",
     "parcel-bundler": "^1.12.0",
     "prettier": "^1.18.2",
+    "ts-jest": "^24.0.2",
     "typescript": "^3.3.3333"
   }
 }
