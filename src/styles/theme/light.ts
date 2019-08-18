@@ -1,6 +1,6 @@
+import { darken } from 'polished'
 import { Theme } from '../../utils/styled'
 import brandColors from '../colors/brandColors'
-import { darken } from 'polished'
 
 const lightTheme: Theme = {
   colors: {
@@ -20,11 +20,12 @@ const lightTheme: Theme = {
   },
   fonts: {
     headings:
-      "'IBM Plex Sans', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Arial, sans-serif",
+      // eslint-disable-next-line max-len
+      "'IBM Plex Sans', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,  Fira Sans, Droid Sans, Helvetica Neue, Arial, sans-serif",
     body:
+      // eslint-disable-next-line max-len
       '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Arial, sans-serif',
-    monospace:
-      "'IBM Plex Mono', Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace, monospace"
+    monospace: "'IBM Plex Mono', Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace, monospace"
   },
   fontSizes: {
     h1: '2.441rem',

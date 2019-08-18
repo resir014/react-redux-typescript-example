@@ -16,8 +16,8 @@ function* handleFetch() {
       yield put(fetchSuccess(res))
     }
   } catch (err) {
-    if (err instanceof Error) {
-      yield put(fetchError(err.stack!))
+    if (err instanceof Error && err.stack) {
+      yield put(fetchError(err.stack))
     } else {
       yield put(fetchError('An unknown error occured.'))
     }

@@ -4,14 +4,15 @@
   "private": true,
   "dependencies": {
     "connected-react-router": "^6.3.1",
+    "create-emotion-styled": "^9.2.8",
     "dotenv-expand": "^4.2.0",
     "emotion": "^9.2.12",
     "emotion-theming": "^9.2.9",
-    "create-emotion-styled": "^9.2.8",
     "history": "^4.7.2",
     "http2": "^3.3.7",
     "moment": "^2.22.2",
     "polished": "^2.3.0",
+    "prop-types": "^15.0.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-emotion": "^9.2.12",
@@ -23,12 +24,12 @@
     "redux-saga": "^0.16.2",
     "typeface-ibm-plex-mono": "^0.0.61",
     "typeface-ibm-plex-sans": "^0.0.61",
-    "typesafe-actions": "^2.0.4",
-    "prop-types": "^15.0.0"
+    "typesafe-actions": "^2.0.4"
   },
   "scripts": {
     "start": "parcel public/index.html",
     "build": "parcel build public/index.html",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "browserslist": {
@@ -54,15 +55,15 @@
     "@types/react-dom": "^16.8.2",
     "@types/react-redux": "^7.0.3",
     "@types/react-router-dom": "^4.3.1",
-    "babel-plugin-emotion": "^9.2.11",
-    "parcel-bundler": "^1.12.0",
-    "typescript": "^3.3.3333",
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.13.0",
+    "babel-plugin-emotion": "^9.2.11",
     "eslint": "^5.0.0",
     "eslint-config-blvd": "^0.2.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.0",
-    "prettier": "^1.18.2"
+    "parcel-bundler": "^1.12.0",
+    "prettier": "^1.18.2",
+    "typescript": "^3.3.3333"
   }
 }

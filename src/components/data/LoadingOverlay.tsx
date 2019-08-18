@@ -1,5 +1,5 @@
-import styled from '../../utils/styled'
 import { transparentize } from 'polished'
+import styled from '../../utils/styled'
 
 const LoadingOverlay = styled('div')`
   position: absolute;

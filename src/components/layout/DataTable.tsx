@@ -11,7 +11,7 @@ const DataTable: React.SFC<DataTableProps> = ({ children, widths, columns }) => 
     <thead>
       <tr>
         {columns.map((column, i) => (
-          <th key={i} style={widths && widths[i] ? { width: widths[i] } : undefined}>
+          <th key={column} style={widths && widths[i] ? { width: widths[i] } : undefined}>
             {column}
           </th>
         ))}

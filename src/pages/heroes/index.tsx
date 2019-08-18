@@ -13,7 +13,6 @@ import LoadingSpinner from '../../components/data/LoadingSpinner'
 import { ApplicationState, ConnectedReduxProps } from '../../store'
 import { Hero } from '../../store/heroes/types'
 import { fetchRequest } from '../../store/heroes/actions'
-import { Dispatch } from 'redux'
 
 // Separate state props + dispatch props to their own interfaces.
 interface PropsFromState {
@@ -34,31 +33,8 @@ const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || 'https://api.opendota
 
 class HeroesIndexPage extends React.Component<AllProps> {
   public componentDidMount() {
-    this.props.fetchRequest()
-  }
-
-  public render() {
-    const { loading } = this.props
-
-    return (
-      <Page>
-        <Container>
-          <TableWrapper>
-            {loading && (
-              <LoadingOverlay>
-                <LoadingOverlayInner>
-                  <LoadingSpinner />
-                </LoadingOverlayInner>
-              </LoadingOverlay>
-            )}
-            <p>
-              <small>*in last 30 days</small>
-            </p>
-            {this.renderData()}
-          </TableWrapper>
-        </Container>
-      </Page>
-    )
+    const { fetchRequest: fr } = this.props
+    fr()
   }
 
   private renderData() {
@@ -86,6 +62,30 @@ class HeroesIndexPage extends React.Component<AllProps> {
           </tr>
         ))}
       </DataTable>
+    )
+  }
+
+  public render() {
+    const { loading } = this.props
+
+    return (
+      <Page>
+        <Container>
+          <TableWrapper>
+            {loading && (
+              <LoadingOverlay>
+                <LoadingOverlayInner>
+                  <LoadingSpinner />
+                </LoadingOverlayInner>
+              </LoadingOverlay>
+            )}
+            <p>
+              <small>*in last 30 days</small>
+            </p>
+            {this.renderData()}
+          </TableWrapper>
+        </Container>
+      </Page>
     )
   }
 }
