@@ -1,7 +1,9 @@
 {
   "recommendations": [
-    "eg2.tslint",
     "EditorConfig.EditorConfig",
-    "esbenp.prettier-vscode"
+    "esbenp.prettier-vscode",
+    "dsznajder.es7-react-js-snippets",
+    "msjsdiag.debugger-for-chrome",
+    "dbaeumer.vscode-eslint"
   ]
 }
