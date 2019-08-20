@@ -1,48 +1,13 @@
 import * as React from 'react'
 import { NavLink } from 'react-router-dom'
+import { css } from 'emotion'
 import styled from '../../utils/styled'
 import LayoutContainer from '../../containers/LayoutContainer'
 import Container from './Container'
-import { css } from 'emotion'
 
 interface HeaderProps {
   title: string
 }
-
-const Header: React.SFC<HeaderProps> = ({ title }) => (
-  <Wrapper>
-    <HeaderInner>
-      <HeaderLeft>
-        <Title>{title}</Title>
-      </HeaderLeft>
-      <HeaderNav>
-        <HeaderNavLink exact to="/" activeClassName={HeaderLinkActive}>
-          Home
-        </HeaderNavLink>
-        <HeaderNavLink to="/heroes" activeClassName={HeaderLinkActive}>
-          Heroes
-        </HeaderNavLink>
-        <HeaderNavLink to="/teams" activeClassName={HeaderLinkActive}>
-          Teams
-        </HeaderNavLink>
-      </HeaderNav>
-      <HeaderRight>
-        <LayoutContainer>
-          {({ theme, setTheme }) => (
-            <React.Fragment>
-              <CurrentTheme>Current theme: {theme}</CurrentTheme>
-              <ThemeSwitcherButton onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
-                Switch theme
-              </ThemeSwitcherButton>
-            </React.Fragment>
-          )}
-        </LayoutContainer>
-      </HeaderRight>
-    </HeaderInner>
-  </Wrapper>
-)
-
-export default Header
 
 const Wrapper = styled('header')`
   padding: 0.5rem 1.5rem;
@@ -115,3 +80,36 @@ const ThemeSwitcherButton = styled('button')`
     color: ${props => props.theme.colors.white};
   }
 `
+
+const Header: React.SFC<HeaderProps> = ({ title }) => (
+  <Wrapper>
+    <HeaderInner>
+      <HeaderLeft>
+        <Title>{title}</Title>
+      </HeaderLeft>
+      <HeaderNav>
+        <HeaderNavLink exact to="/" activeClassName={HeaderLinkActive}>
+          Home
+        </HeaderNavLink>
+        <HeaderNavLink to="/heroes" activeClassName={HeaderLinkActive}>
+          Heroes
+        </HeaderNavLink>
+        <HeaderNavLink to="/teams" activeClassName={HeaderLinkActive}>
+          Teams
+        </HeaderNavLink>
+      </HeaderNav>
+      <HeaderRight>
+        <LayoutContainer>
+          {({ theme, setTheme }) => (
+            <React.Fragment>
+              <CurrentTheme>Current theme: {theme}</CurrentTheme>
+              <ThemeSwitcherButton onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>Switch theme</ThemeSwitcherButton>
+            </React.Fragment>
+          )}
+        </LayoutContainer>
+      </HeaderRight>
+    </HeaderInner>
+  </Wrapper>
+)
+
+export default Header

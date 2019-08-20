@@ -14,7 +14,6 @@ import LoadingSpinner from '../../components/data/LoadingSpinner'
 import { ApplicationState, ConnectedReduxProps } from '../../store'
 import { Team } from '../../store/teams/types'
 import { fetchRequest } from '../../store/teams/actions'
-import { Dispatch } from 'redux'
 
 // Separate state props + dispatch props to their own interfaces.
 interface PropsFromState {
@@ -40,35 +39,11 @@ class TeamsIndexPage extends React.Component<AllProps> {
     }
   }
 
-  public render() {
-    const { loading } = this.props
-
-    return (
-      <Page>
-        <Container>
-          <TableWrapper>
-            {loading && (
-              <LoadingOverlay>
-                <LoadingOverlayInner>
-                  <LoadingSpinner />
-                </LoadingOverlayInner>
-              </LoadingOverlay>
-            )}
-            {this.renderData()}
-          </TableWrapper>
-        </Container>
-      </Page>
-    )
-  }
-
   private renderData() {
     const { data } = this.props
 
     return (
-      <DataTable
-        columns={['Rank', 'Team', 'Rating', 'Wins / Losses', 'Last Match']}
-        widths={['', 'auto', '', '', '']}
-      >
+      <DataTable columns={['Rank', 'Team', 'Rating', 'Wins / Losses', 'Last Match']} widths={['', 'auto', '', '', '']}>
         {data.slice(0, 20).map((team, i) => {
           const lastMatch = moment(team.last_match_time * 1000)
 
@@ -94,6 +69,27 @@ class TeamsIndexPage extends React.Component<AllProps> {
           )
         })}
       </DataTable>
+    )
+  }
+
+  public render() {
+    const { loading } = this.props
+
+    return (
+      <Page>
+        <Container>
+          <TableWrapper>
+            {loading && (
+              <LoadingOverlay>
+                <LoadingOverlayInner>
+                  <LoadingSpinner />
+                </LoadingOverlayInner>
+              </LoadingOverlay>
+            )}
+            {this.renderData()}
+          </TableWrapper>
+        </Container>
+      </Page>
     )
   }
 }

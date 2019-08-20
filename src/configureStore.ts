@@ -12,10 +12,7 @@ import { History } from 'history'
 // Import the state interface and our combined reducers/sagas.
 import { ApplicationState, createRootReducer, rootSaga } from './store'
 
-export default function configureStore(
-  history: History,
-  initialState: ApplicationState
-): Store<ApplicationState> {
+export default function configureStore(history: History, initialState: ApplicationState): Store<ApplicationState> {
   // create the composing function for our middlewares
   const composeEnhancers = composeWithDevTools({})
   // create the redux-saga middleware

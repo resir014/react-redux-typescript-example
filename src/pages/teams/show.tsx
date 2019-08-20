@@ -15,7 +15,6 @@ import { selectTeam, clearSelected } from '../../store/teams/actions'
 import { darken, transparentize } from '../../../node_modules/polished'
 import { Themed } from '../../../node_modules/react-emotion'
 import DataTable from '../../components/layout/DataTable'
-import { Dispatch } from 'redux'
 
 // Separate state props + dispatch props to their own interfaces.
 interface PropsFromState {
@@ -34,13 +33,9 @@ interface RouteParams {
 }
 
 // Combine both state + dispatch props - as well as any props we want to pass - in a union type.
-type AllProps = PropsFromState &
-  PropsFromDispatch &
-  RouteComponentProps<RouteParams> &
-  ConnectedReduxProps
+type AllProps = PropsFromState & PropsFromDispatch & RouteComponentProps<RouteParams> & ConnectedReduxProps
 
-const formatPlayerIcon = (account_id: number) =>
-  `https://www.opendota.com/assets/images/dota2/players/${account_id}.png`
+const formatPlayerIcon = (accountId: number) => `https://www.opendota.com/assets/images/dota2/players/${accountId}.png`
 
 class ShowTeamsPage extends React.Component<AllProps> {
   public componentDidMount() {
@@ -73,9 +68,7 @@ class ShowTeamsPage extends React.Component<AllProps> {
                 {selected.detail && (
                   <TeamInfobox>
                     <TeamInfoboxInner>
-                      {selected.detail.logo_url && (
-                        <TeamLogo src={selected.detail.logo_url} alt={selected.detail.tag} />
-                      )}
+                      {selected.detail.logo_url && <TeamLogo src={selected.detail.logo_url} alt={selected.detail.tag} />}
                       <TeamInfoboxHeading>
                         <TeamName>{selected.detail.name}</TeamName>
                       </TeamInfoboxHeading>
@@ -107,10 +100,7 @@ class ShowTeamsPage extends React.Component<AllProps> {
                         .map(player => (
                           <tr key={player.account_id}>
                             <PlayerDetail>
-                              <PlayerIcon
-                                src={formatPlayerIcon(player.account_id)}
-                                alt={player.name}
-                              />
+                              <PlayerIcon src={formatPlayerIcon(player.account_id)} alt={player.name} />
                               <PlayerName>{player.name}</PlayerName>
                             </PlayerDetail>
                             <td>{player.games_played}</td>
@@ -252,11 +242,8 @@ const StatNumber = styled('p')`
   margin: 0;
   font-size: 1.5rem;
   color: ${(props: Themed<StatNumberProps, Theme>) =>
-    props.attr
-      ? props.attr === 'win'
-        ? props.theme.colors.attrs.agi
-        : props.theme.colors.attrs.str
-      : undefined};
+    // eslint-disable-next-line no-nested-ternary
+    props.attr ? (props.attr === 'win' ? props.theme.colors.attrs.agi : props.theme.colors.attrs.str) : undefined};
 `
 
 const TableWrapper = styled('div')`
