@@ -10,7 +10,7 @@
     "emotion-theming": "^9.2.9",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
-    "history": "^4.7.2",
+    "history": "^4.9.0",
     "http2": "^3.3.7",
     "moment": "^2.22.2",
     "polished": "^2.3.0",
