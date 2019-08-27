@@ -11,5 +11,5 @@ export const clearSelected = () => action(TeamsActionTypes.CLEAR_SELECTED)
 // type them properly as well.
 export const fetchSuccess = (data: Team[]) => action(TeamsActionTypes.FETCH_SUCCESS, data)
 export const fetchError = (message: string) => action(TeamsActionTypes.FETCH_ERROR, message)
-export const selectTeam = (team_id: string) => action(TeamsActionTypes.SELECT_TEAM, team_id)
+export const selectTeam = (teamId: string) => action(TeamsActionTypes.SELECT_TEAM, teamId)
 export const teamSelected = (team: TeamSelectedPayload) => action(TeamsActionTypes.SELECTED, team)

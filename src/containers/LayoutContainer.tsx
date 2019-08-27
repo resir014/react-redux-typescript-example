@@ -39,8 +39,8 @@ const LayoutContainer: React.FC<LayoutContainerRenderProps> = ({ render, childre
 
         // Obtain the `theme` state and the `setTheme` action.
         // Note that per Redux conventions actions MUST be wrapped inside `store.dispatch()`
-        const theme = state.layout.theme
-        const setTheme = (theme: ThemeColors) => store.dispatch(layoutActions.setTheme(theme))
+        const { theme } = state.layout
+        const setTheme = (tc: ThemeColors) => store.dispatch(layoutActions.setTheme(tc))
 
         // Create a render/children props wrapper with the above variables set as a callback.
         if (render) {

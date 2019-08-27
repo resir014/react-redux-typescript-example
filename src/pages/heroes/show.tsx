@@ -2,6 +2,8 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
 
+import { darken } from 'polished'
+import { Themed } from 'react-emotion'
 import Page from '../../components/layout/Page'
 import Container from '../../components/layout/Container'
 
@@ -12,9 +14,6 @@ import styled, { Theme } from '../../utils/styled'
 import LoadingOverlay from '../../components/data/LoadingOverlay'
 import LoadingOverlayInner from '../../components/data/LoadingOverlayInner'
 import LoadingSpinner from '../../components/data/LoadingSpinner'
-import { darken } from 'polished'
-import { Themed } from 'react-emotion'
-import { Dispatch } from 'redux'
 
 // Separate state props + dispatch props to their own interfaces.
 interface PropsFromState {
@@ -37,10 +36,7 @@ interface State {
 }
 
 // Combine both state + dispatch props - as well as any props we want to pass - in a union type.
-type AllProps = PropsFromState &
-  PropsFromDispatch &
-  RouteComponentProps<RouteParams> &
-  ConnectedReduxProps
+type AllProps = PropsFromState & PropsFromDispatch & RouteComponentProps<RouteParams> & ConnectedReduxProps
 
 const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || 'https://api.opendota.com'
 
@@ -48,9 +44,7 @@ class ShowHeroesPage extends React.Component<AllProps, State> {
   constructor(props: AllProps) {
     super(props)
 
-    this.state = {
-      selected: undefined
-    }
+    this.state = {}
   }
 
   public componentDidMount() {
@@ -243,8 +237,7 @@ const StatAttribute = styled('div')`
   flex: 1 1 0;
   padding: 0 1rem;
   font-size: 0.8rem;
-  color: ${(props: Themed<StatAttributeProps, Theme>) =>
-    props.isPrimaryAttr && props.theme.colors.attrs[props.attr]};
+  color: ${(props: Themed<StatAttributeProps, Theme>) => props.isPrimaryAttr && props.theme.colors.attrs[props.attr]};
 `
 
 interface BulletProps {

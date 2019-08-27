@@ -18,17 +18,13 @@ interface PropsFromState {
 // Combine both state + dispatch props - as well as any props we want to pass - in a union type.
 type AllProps = PropsFromState & RouteComponentProps<{}> & ConnectedReduxProps
 
-class HeroesPage extends React.Component<AllProps> {
-  public render() {
-    const { match } = this.props
-
-    return (
-      <Switch>
-        <Route exact path={match.path + '/'} component={HeroesIndexPage} />
-        <Route path={match.path + '/:name'} component={ShowHeroesPage} />
-      </Switch>
-    )
-  }
+const HeroesPage: React.FC<AllProps> = ({ match }) => {
+  return (
+    <Switch>
+      <Route exact path={`${match.path}/`} component={HeroesIndexPage} />
+      <Route path={`${match.path}/:name`} component={ShowHeroesPage} />
+    </Switch>
+  )
 }
 
 // It's usually good practice to only include one context at a time in a connected component.
