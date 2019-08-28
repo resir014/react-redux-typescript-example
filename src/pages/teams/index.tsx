@@ -11,7 +11,7 @@ import LoadingOverlay from '../../components/data/LoadingOverlay'
 import LoadingOverlayInner from '../../components/data/LoadingOverlayInner'
 import LoadingSpinner from '../../components/data/LoadingSpinner'
 
-import { ApplicationState, ConnectedReduxProps } from '../../store'
+import { ApplicationState } from '../../store'
 import { Team } from '../../store/teams/types'
 import { fetchRequest } from '../../store/teams/actions'
 
@@ -28,7 +28,7 @@ interface PropsFromDispatch {
 }
 
 // Combine both state + dispatch props - as well as any props we want to pass - in a union type.
-type AllProps = PropsFromState & PropsFromDispatch & ConnectedReduxProps
+type AllProps = PropsFromState & PropsFromDispatch
 
 class TeamsIndexPage extends React.Component<AllProps> {
   public componentDidMount() {

@@ -7,7 +7,7 @@ import { Themed } from 'react-emotion'
 import Page from '../../components/layout/Page'
 import Container from '../../components/layout/Container'
 
-import { ApplicationState, ConnectedReduxProps } from '../../store'
+import { ApplicationState } from '../../store'
 import { Hero } from '../../store/heroes/types'
 import { fetchRequest } from '../../store/heroes/actions'
 import styled, { Theme } from '../../utils/styled'
@@ -36,7 +36,7 @@ interface State {
 }
 
 // Combine both state + dispatch props - as well as any props we want to pass - in a union type.
-type AllProps = PropsFromState & PropsFromDispatch & RouteComponentProps<RouteParams> & ConnectedReduxProps
+type AllProps = PropsFromState & PropsFromDispatch & RouteComponentProps<RouteParams>
 
 const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || 'https://api.opendota.com'
 

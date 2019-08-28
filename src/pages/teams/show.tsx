@@ -9,7 +9,7 @@ import LoadingOverlay from '../../components/data/LoadingOverlay'
 import LoadingOverlayInner from '../../components/data/LoadingOverlayInner'
 import LoadingSpinner from '../../components/data/LoadingSpinner'
 
-import { ApplicationState, ConnectedReduxProps } from '../../store'
+import { ApplicationState } from '../../store'
 import { TeamSelectedPayload } from '../../store/teams/types'
 import { selectTeam, clearSelected } from '../../store/teams/actions'
 import { darken, transparentize } from '../../../node_modules/polished'
@@ -33,7 +33,7 @@ interface RouteParams {
 }
 
 // Combine both state + dispatch props - as well as any props we want to pass - in a union type.
-type AllProps = PropsFromState & PropsFromDispatch & RouteComponentProps<RouteParams> & ConnectedReduxProps
+type AllProps = PropsFromState & PropsFromDispatch & RouteComponentProps<RouteParams>
 
 const formatPlayerIcon = (accountId: number) => `https://www.opendota.com/assets/images/dota2/players/${accountId}.png`
 

@@ -5,7 +5,7 @@ import { RouteComponentProps, Route, Switch } from 'react-router-dom'
 import TeamsIndexPage from './teams/index'
 import ShowTeamsPage from './teams/show'
 
-import { ApplicationState, ConnectedReduxProps } from '../store'
+import { ApplicationState } from '../store'
 
 // Separate state props + dispatch props to their own interfaces.
 interface PropsFromState {
@@ -14,7 +14,7 @@ interface PropsFromState {
 }
 
 // Combine both state + dispatch props - as well as any props we want to pass - in a union type.
-type AllProps = PropsFromState & RouteComponentProps<{}> & ConnectedReduxProps
+type AllProps = PropsFromState & RouteComponentProps
 
 const TeamsPage: React.FC<AllProps> = ({ match }) => {
   return (

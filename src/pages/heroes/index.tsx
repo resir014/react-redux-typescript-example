@@ -10,7 +10,7 @@ import LoadingOverlay from '../../components/data/LoadingOverlay'
 import LoadingOverlayInner from '../../components/data/LoadingOverlayInner'
 import LoadingSpinner from '../../components/data/LoadingSpinner'
 
-import { ApplicationState, ConnectedReduxProps } from '../../store'
+import { ApplicationState } from '../../store'
 import { Hero } from '../../store/heroes/types'
 import { fetchRequest } from '../../store/heroes/actions'
 
@@ -27,7 +27,7 @@ interface PropsFromDispatch {
 }
 
 // Combine both state + dispatch props - as well as any props we want to pass - in a union type.
-type AllProps = PropsFromState & PropsFromDispatch & ConnectedReduxProps
+type AllProps = PropsFromState & PropsFromDispatch
 
 const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || 'https://api.opendota.com'
 

@@ -1,4 +1,4 @@
-import { combineReducers, Dispatch, Action, AnyAction } from 'redux'
+import { combineReducers } from 'redux'
 import { all, fork } from 'redux-saga/effects'
 import { connectRouter, RouterState } from 'connected-react-router'
 import { History } from 'history'
@@ -18,11 +18,6 @@ export interface ApplicationState {
   heroes: HeroesState
   teams: TeamsState
   router: RouterState
-}
-
-// Additional props for connected React components. This prop is passed by default with `connect()`
-export interface ConnectedReduxProps<A extends Action = AnyAction> {
-  dispatch: Dispatch<A>
 }
 
 // Whenever an action is dispatched, Redux will update each top-level application state property
