@@ -1,6 +1,6 @@
-import { css } from 'react-emotion'
+import { css } from '@emotion/core'
 
-export default css`
+const globals = css`
   body {
     width: 100%;
     overflow-x: hidden;
@@ -37,3 +37,5 @@ export default css`
     border-collapse: collapse;
   }
 `
+
+export default globals

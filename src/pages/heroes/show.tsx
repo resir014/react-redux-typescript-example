@@ -3,14 +3,13 @@ import { connect } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
 
 import { darken } from 'polished'
-import { Themed } from 'react-emotion'
 import Page from '../../components/layout/Page'
 import Container from '../../components/layout/Container'
 
 import { ApplicationState } from '../../store'
 import { Hero } from '../../store/heroes/types'
 import { fetchRequest } from '../../store/heroes/actions'
-import styled, { Theme } from '../../utils/styled'
+import styled from '../../utils/styled'
 import LoadingOverlay from '../../components/data/LoadingOverlay'
 import LoadingOverlayInner from '../../components/data/LoadingOverlayInner'
 import LoadingSpinner from '../../components/data/LoadingSpinner'
@@ -71,31 +70,33 @@ class ShowHeroesPage extends React.Component<AllProps, State> {
               </LoadingOverlay>
             )}
             {selected && (
-              <HeroInfobox>
-                <HeroInfoboxBlurBackground src={API_ENDPOINT + selected.img} />
-                <HeroInfoboxInner>
-                  <HeroInfoboxImage src={API_ENDPOINT + selected.img} />
-                  <HeroInfoboxHeading>
-                    <HeroName>{selected.localized_name}</HeroName>
-                    <HeroDetails>
-                      {selected.attack_type} - <span>{selected.roles.join(', ')}</span>
-                    </HeroDetails>
-                  </HeroInfoboxHeading>
-                  <HeroStats>
-                    <HeroStatsInner>
-                      <StatAttribute attr="str" isPrimaryAttr={selected.primary_attr === 'str'}>
-                        <Bullet attr="str" /> {selected.base_str || 0} + {selected.str_gain || 0}
-                      </StatAttribute>
-                      <StatAttribute attr="agi" isPrimaryAttr={selected.primary_attr === 'agi'}>
-                        <Bullet attr="agi" /> {selected.base_agi || 0} + {selected.agi_gain || 0}
-                      </StatAttribute>
-                      <StatAttribute attr="int" isPrimaryAttr={selected.primary_attr === 'int'}>
-                        <Bullet attr="int" /> {selected.base_int || 0} + {selected.int_gain || 0}
-                      </StatAttribute>
-                    </HeroStatsInner>
-                  </HeroStats>
-                </HeroInfoboxInner>
-              </HeroInfobox>
+              <>
+                <HeroInfobox>
+                  <HeroInfoboxBlurBackground src={API_ENDPOINT + selected.img} />
+                  <HeroInfoboxInner>
+                    <HeroInfoboxImage src={API_ENDPOINT + selected.img} />
+                    <HeroInfoboxHeading>
+                      <HeroName>{selected.localized_name}</HeroName>
+                      <HeroDetails>
+                        {selected.attack_type} - <span>{selected.roles.join(', ')}</span>
+                      </HeroDetails>
+                    </HeroInfoboxHeading>
+                    <HeroStats>
+                      <HeroStatsInner>
+                        <StatAttribute attr="str" isPrimaryAttr={selected.primary_attr === 'str'}>
+                          <Bullet attr="str" /> {selected.base_str || 0} + {selected.str_gain || 0}
+                        </StatAttribute>
+                        <StatAttribute attr="agi" isPrimaryAttr={selected.primary_attr === 'agi'}>
+                          <Bullet attr="agi" /> {selected.base_agi || 0} + {selected.agi_gain || 0}
+                        </StatAttribute>
+                        <StatAttribute attr="int" isPrimaryAttr={selected.primary_attr === 'int'}>
+                          <Bullet attr="int" /> {selected.base_int || 0} + {selected.int_gain || 0}
+                        </StatAttribute>
+                      </HeroStatsInner>
+                    </HeroStats>
+                  </HeroInfoboxInner>
+                </HeroInfobox>
+              </>
             )}
           </Wrapper>
         </Container>
@@ -231,24 +232,24 @@ interface StatAttributeProps {
   isPrimaryAttr?: boolean
 }
 
-const StatAttribute = styled('div')`
+const StatAttribute = styled('div')<StatAttributeProps>`
   display: flex;
   align-items: center;
   flex: 1 1 0;
   padding: 0 1rem;
   font-size: 0.8rem;
-  color: ${(props: Themed<StatAttributeProps, Theme>) => props.isPrimaryAttr && props.theme.colors.attrs[props.attr]};
+  color: ${props => props.isPrimaryAttr && props.theme.colors.attrs[props.attr]};
 `
 
 interface BulletProps {
   attr: 'str' | 'agi' | 'int'
 }
 
-const Bullet = styled('div')`
+const Bullet = styled('div')<BulletProps>`
   flex-shrink: 0;
   height: 0.5rem;
   width: 0.5rem;
   margin-right: 8px;
   border-radius: 50%;
-  background-color: ${(props: Themed<BulletProps, Theme>) => props.theme.colors.attrs[props.attr]};
+  background-color: ${props => props.theme.colors.attrs[props.attr]};
 `

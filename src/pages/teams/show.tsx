@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
-import styled, { Theme } from '../../utils/styled'
+import styled from '../../utils/styled'
 
 import Page from '../../components/layout/Page'
 import Container from '../../components/layout/Container'
@@ -13,7 +13,6 @@ import { ApplicationState } from '../../store'
 import { TeamSelectedPayload } from '../../store/teams/types'
 import { selectTeam, clearSelected } from '../../store/teams/actions'
 import { darken, transparentize } from '../../../node_modules/polished'
-import { Themed } from '../../../node_modules/react-emotion'
 import DataTable from '../../components/layout/DataTable'
 
 // Separate state props + dispatch props to their own interfaces.
@@ -238,10 +237,10 @@ interface StatNumberProps {
   attr?: 'win' | 'loss'
 }
 
-const StatNumber = styled('p')`
+const StatNumber = styled('p')<StatNumberProps>`
   margin: 0;
   font-size: 1.5rem;
-  color: ${(props: Themed<StatNumberProps, Theme>) =>
+  color: ${props =>
     // eslint-disable-next-line no-nested-ternary
     props.attr ? (props.attr === 'win' ? props.theme.colors.attrs.agi : props.theme.colors.attrs.str) : undefined};
 `
