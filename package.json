@@ -6,13 +6,10 @@
     "@emotion/core": "^10.0.16",
     "@emotion/styled": "^10.0.15",
     "connected-react-router": "^6.5.2",
-    "create-emotion-styled": "^9.2.8",
-    "dotenv-expand": "^4.2.0",
     "emotion-theming": "^10.0.14",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "history": "^4.9.0",
-    "http2": "^3.3.7",
     "moment": "^2.22.2",
     "polished": "^2.3.0",
     "prop-types": "^15.0.0",
@@ -29,11 +26,11 @@
     "typesafe-actions": "^2.0.4"
   },
   "scripts": {
-    "start": "parcel public/index.html",
-    "build": "parcel build public/index.html",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
-    "test": "jest --watch",
-    "test:ci": "set CI=1 && jest"
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "browserslist": {
     "development": [
@@ -49,9 +46,6 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-react": "^7.0.0",
     "@types/enzyme": "^3.10.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/history": "^4.7.3",
@@ -61,18 +55,16 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-redux": "^7.1.2",
     "@types/react-router-dom": "^4.3.5",
-    "@typescript-eslint/eslint-plugin": "^1.13.0",
-    "@typescript-eslint/parser": "^1.13.0",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
     "babel-plugin-emotion": "^10.0.16",
-    "eslint": "^5.16.0",
-    "eslint-config-blvd": "^0.2.0",
+    "eslint": "^6.2.2",
+    "eslint-config-blvd": "^1.0.0",
     "eslint-config-prettier": "^6.1.0",
     "eslint-plugin-jest": "^22.15.2",
     "eslint-plugin-prettier": "^3.1.0",
-    "jest": "^24.9.0",
-    "parcel-bundler": "^1.12.3",
     "prettier": "^1.18.2",
-    "ts-jest": "^24.0.2",
-    "typescript": "^3.5.3"
+    "react-scripts": "^3.1.1",
+    "typescript": "^3.6.2"
   }
 }
