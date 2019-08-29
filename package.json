@@ -22,7 +22,7 @@
     "redux-devtools-extension": "^2.13.5",
     "redux-saga": "^0.16.2",
     "typeface-ibm-plex-mono": "^0.0.61",
-    "typeface-ibm-plex-sans": "^0.0.61",
+    "typeface-ibm-plex-sans": "^0.0.75",
     "typesafe-actions": "^2.0.4"
   },
   "scripts": {

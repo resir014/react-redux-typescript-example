@@ -10184,10 +10184,10 @@ typeface-ibm-plex-mono@^0.0.61:
   resolved "https://registry.yarnpkg.com/typeface-ibm-plex-mono/-/typeface-ibm-plex-mono-0.0.61.tgz#ee7f12643e2bfee5c5c6915350005d6dfdaa66fd"
   integrity sha512-4Pzza33ihcW1l9qSs6WmRRb6FxVoDvpoTws55V9rwN7zVqURFh1c/i4qWCmHJ0Dyr0c+pYgQVyb/aAwsRjv2Lg==
 
-typeface-ibm-plex-sans@^0.0.61:
-  version "0.0.61"
-  resolved "https://registry.yarnpkg.com/typeface-ibm-plex-sans/-/typeface-ibm-plex-sans-0.0.61.tgz#be3216e634735e46625b638dfb90580e178e4517"
-  integrity sha512-lR/PiUiki2n3+oSsrMditaAHpiUUtNEb8GTd1vebKcQ6XJdpgtwE7iYSNTgmSXYYPp71e8zVVJfg+M9rlaltfg==
+typeface-ibm-plex-sans@^0.0.75:
+  version "0.0.75"
+  resolved "https://registry.yarnpkg.com/typeface-ibm-plex-sans/-/typeface-ibm-plex-sans-0.0.75.tgz#47fffee4b9004e9d22300ed99bb679cbeed5c6ff"
+  integrity sha512-IBxDEt5r0Xo5EshGBb1CR1ec3ApNI0jK0o2gSGNZIoKml9q99a/Qcbb8u8IK0x/M+nso8FzcMW03Hz6gSfCIAg==
 
 typesafe-actions@^2.0.4:
   version "2.2.0"

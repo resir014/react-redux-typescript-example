@@ -18,8 +18,8 @@
     "jest/globals": true
   },
   "rules": {
-    "import/prefer-default-export": false,
-    "@typescript-eslint/explicit-function-return-type": false,
+    "import/prefer-default-export": ["off"],
+    "@typescript-eslint/explicit-function-return-type": ["off"],
     "@typescript-eslint/explicit-member-accessibility": [
       "error",
       {
@@ -29,21 +29,12 @@
         }
       }
     ],
-    "react/destructuring-assignment": [
-      "enabled",
-      "always",
-      {
-        "ignoreClassFields": true
-      }
-    ],
     "react/no-unescaped-entities": [
       "error",
       {
-        "forbid": [{ "char": ">", "alternatives": ["&gt;"] }, { "char": "}", "alternatives": "&#125;" }]
+        "forbid": [{ "char": ">", "alternatives": ["&gt;"] }, { "char": "}", "alternatives": ["&#125;"] }]
       }
     ],
-
-    /* Jest rules*/
     "jest/no-disabled-tests": "warn",
     "jest/no-focused-tests": "error",
     "jest/no-identical-title": "error",
