@@ -51,9 +51,9 @@ class TeamsIndexPage extends React.Component<AllProps> {
             <tr key={team.team_id}>
               <td>{i + 1}</td>
               <TeamDetail>
-                {team.logo_url && <TeamLogo src={team.logo_url} alt={team.tag} />}
+                <TeamLogo>{team.logo_url && <img src={team.logo_url} alt={team.tag} />}</TeamLogo>
                 <TeamName>
-                  <Link to={`/teams/${team.team_id}`}>{team.name}</Link>
+                  <Link to={`/teams/${team.team_id}`}>{team.name || '(no name)'}</Link>
                 </TeamName>
               </TeamDetail>
               <td>{team.rating.toFixed(0)}</td>
@@ -130,9 +130,17 @@ const TeamDetail = styled('td')`
   min-height: 66px;
 `
 
-const TeamLogo = styled('img')`
+const TeamLogo = styled('div')`
+  position: relative;
   width: 50px;
   height: 50px;
+
+  img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 `
 
 const TeamName = styled('div')`

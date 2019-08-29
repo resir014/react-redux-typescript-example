@@ -2,7 +2,17 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
 
-import { darken } from 'polished'
+import {
+  HeroInfobox,
+  HeroInfoboxImage,
+  HeroInfoboxHeading,
+  HeroInfoboxInner,
+  HeroInfoboxBlurBackground,
+  HeroName,
+  HeroRoles
+} from '../../components/heroes/HeroInfobox'
+import { HeroStats, HeroStatsInner, StatAttribute, Bullet } from '../../components/heroes/HeroStats'
+import { HeroDetails, HeroDetailsColumn, HeroDetailsRow, HeroDetailsAttrName } from '../../components/heroes/HeroDetails'
 import Page from '../../components/layout/Page'
 import Container from '../../components/layout/Container'
 
@@ -38,6 +48,10 @@ interface State {
 type AllProps = PropsFromState & PropsFromDispatch & RouteComponentProps<RouteParams>
 
 const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || 'https://api.opendota.com'
+
+const Wrapper = styled('div')`
+  position: relative;
+`
 
 class ShowHeroesPage extends React.Component<AllProps, State> {
   constructor(props: AllProps) {
@@ -77,9 +91,9 @@ class ShowHeroesPage extends React.Component<AllProps, State> {
                     <HeroInfoboxImage src={API_ENDPOINT + selected.img} />
                     <HeroInfoboxHeading>
                       <HeroName>{selected.localized_name}</HeroName>
-                      <HeroDetails>
+                      <HeroRoles>
                         {selected.attack_type} - <span>{selected.roles.join(', ')}</span>
-                      </HeroDetails>
+                      </HeroRoles>
                     </HeroInfoboxHeading>
                     <HeroStats>
                       <HeroStatsInner>
@@ -96,6 +110,58 @@ class ShowHeroesPage extends React.Component<AllProps, State> {
                     </HeroStats>
                   </HeroInfoboxInner>
                 </HeroInfobox>
+                <HeroDetails>
+                  <HeroDetailsColumn>
+                    <HeroDetailsRow>
+                      <HeroDetailsAttrName>Base Attack:</HeroDetailsAttrName> {selected.base_attack_min} - {selected.base_attack_max}
+                    </HeroDetailsRow>
+                    <HeroDetailsRow>
+                      <HeroDetailsAttrName>Attack Range:</HeroDetailsAttrName> {selected.attack_range || '-'}
+                    </HeroDetailsRow>
+                    <HeroDetailsRow>
+                      <HeroDetailsAttrName>Attack Speed:</HeroDetailsAttrName> {selected.attack_speed || '-'}
+                    </HeroDetailsRow>
+                    <HeroDetailsRow>
+                      <HeroDetailsAttrName>Projectile Speed:</HeroDetailsAttrName> {selected.projectile_speed || '-'}
+                    </HeroDetailsRow>
+                  </HeroDetailsColumn>
+                  <HeroDetailsColumn>
+                    <HeroDetailsRow>
+                      <HeroDetailsAttrName>Health:</HeroDetailsAttrName> {selected.base_health || 0}
+                    </HeroDetailsRow>
+                    <HeroDetailsRow>
+                      <HeroDetailsAttrName>Health Regen:</HeroDetailsAttrName> {selected.base_health_regen || 0}
+                    </HeroDetailsRow>
+                    <HeroDetailsRow>
+                      <HeroDetailsAttrName>Mana:</HeroDetailsAttrName> {selected.base_mana || 0}
+                    </HeroDetailsRow>
+                    <HeroDetailsRow>
+                      <HeroDetailsAttrName>Mana Regen:</HeroDetailsAttrName> {selected.base_mana_regen || 0}
+                    </HeroDetailsRow>
+                  </HeroDetailsColumn>
+                  <HeroDetailsColumn>
+                    <HeroDetailsRow>
+                      <HeroDetailsAttrName>Base Armor:</HeroDetailsAttrName> -
+                    </HeroDetailsRow>
+                    <HeroDetailsRow>
+                      <HeroDetailsAttrName>Magic Resistance:</HeroDetailsAttrName> {selected.base_mr || 0}%
+                    </HeroDetailsRow>
+                    <HeroDetailsRow>
+                      <HeroDetailsAttrName>Move Speed:</HeroDetailsAttrName> {selected.move_speed || 0}
+                    </HeroDetailsRow>
+                    <HeroDetailsRow>
+                      <HeroDetailsAttrName>Turn Speed:</HeroDetailsAttrName> {selected.turn_rate || 0}
+                    </HeroDetailsRow>
+                  </HeroDetailsColumn>
+                  <HeroDetailsColumn>
+                    <HeroDetailsRow>
+                      <HeroDetailsAttrName>Number of Legs:</HeroDetailsAttrName> {selected.legs}
+                    </HeroDetailsRow>
+                    <HeroDetailsRow>
+                      <HeroDetailsAttrName>CM Enabled:</HeroDetailsAttrName> {selected.cm_enabled ? 'yes' : 'no'}
+                    </HeroDetailsRow>
+                  </HeroDetailsColumn>
+                </HeroDetails>
               </>
             )}
           </Wrapper>
@@ -126,130 +192,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(ShowHeroesPage)
-
-const Wrapper = styled('div')`
-  position: relative;
-`
-
-const HeroInfobox = styled('div')`
-  position: relative;
-  background: rgba(0, 0, 0, 0.9);
-  overflow: hidden;
-  border-radius: 8px;
-  color: ${props => darken(0.25, props.theme.colors.white)};
-`
-
-const HeroInfoboxBlurBackground = styled('img')`
-  position: absolute;
-  top: -12.5%;
-  left: -12.5%;
-  width: 125%;
-  height: 125%;
-  filter: blur(25px);
-  object-fit: cover;
-  opacity: 0.35;
-  background-repeat: no-repeat;
-  z-index: 1;
-`
-
-const HeroInfoboxInner = styled('div')`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  padding: 3rem;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 125px inset;
-  z-index: 2;
-
-  @media (min-width: ${props => props.theme.breakpoints.lg}) {
-    flex-direction: row;
-  }
-`
-
-const HeroInfoboxImage = styled('img')`
-  display: block;
-  flex-shrink: 0;
-  width: 180px;
-  height: 128px;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 12px 32px;
-  object-fit: cover;
-  border-radius: 16px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgba(0, 0, 0, 0.3);
-  border-image: initial;
-`
-
-const HeroInfoboxHeading = styled('div')`
-  flex: 1 1 100%;
-  margin: 1.5rem 0 0;
-  text-align: center;
-
-  @media (min-width: ${props => props.theme.breakpoints.lg}) {
-    margin: 0 1.5rem;
-    text-align: left;
-  }
-`
-
-const HeroName = styled('h1')`
-  margin: 0;
-  color: ${props => props.theme.colors.white};
-  font-weight: 500;
-`
-
-const HeroDetails = styled('p')`
-  margin: 0.5rem 0 0;
-  color: ${props => props.theme.colors.white};
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-
-  & span {
-    color: ${props => darken(0.25, props.theme.colors.white)};
-  }
-`
-
-const HeroStats = styled('div')`
-  display: block;
-  max-width: 340px;
-  margin: 1.5rem 0 0;
-  background: rgba(0, 0, 0, 0.45);
-  border-radius: 8px;
-  padding: 12px;
-
-  @media (min-width: ${props => props.theme.breakpoints.lg}) {
-    margin: 0;
-    flex: 1 0 340px;
-  }
-`
-
-const HeroStatsInner = styled('div')`
-  display: flex;
-`
-
-interface StatAttributeProps {
-  attr: 'str' | 'agi' | 'int'
-  isPrimaryAttr?: boolean
-}
-
-const StatAttribute = styled('div')<StatAttributeProps>`
-  display: flex;
-  align-items: center;
-  flex: 1 1 0;
-  padding: 0 1rem;
-  font-size: 0.8rem;
-  color: ${props => props.isPrimaryAttr && props.theme.colors.attrs[props.attr]};
-`
-
-interface BulletProps {
-  attr: 'str' | 'agi' | 'int'
-}
-
-const Bullet = styled('div')<BulletProps>`
-  flex-shrink: 0;
-  height: 0.5rem;
-  width: 0.5rem;
-  margin-right: 8px;
-  border-radius: 50%;
-  background-color: ${props => props.theme.colors.attrs[props.attr]};
-`
