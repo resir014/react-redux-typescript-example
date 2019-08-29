@@ -7,8 +7,8 @@ import { ThemeProvider } from 'emotion-theming'
 
 import Routes from './routes'
 import { ApplicationState } from './store'
-import * as themes from './styles/theme'
 import LayoutContainer from './containers/LayoutContainer'
+import * as themes from './styles/theme'
 
 // Any additional component props go here.
 interface MainProps {

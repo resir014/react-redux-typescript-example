@@ -1,6 +1,6 @@
-import { css } from 'react-emotion'
+import { css } from '@emotion/core'
 
-export default css`
+const normalize = css`
   /*! modern-normalize | MIT License | https://github.com/sindresorhus/modern-normalize */
 
   /* Document
@@ -285,3 +285,5 @@ export default css`
     display: list-item;
   }
 `
+
+export default normalize

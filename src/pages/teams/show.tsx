@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { RouteComponentProps } from 'react-router'
-import styled, { Theme } from '../../utils/styled'
+import styled from '../../utils/styled'
 
 import Page from '../../components/layout/Page'
 import Container from '../../components/layout/Container'
@@ -12,9 +12,16 @@ import LoadingSpinner from '../../components/data/LoadingSpinner'
 import { ApplicationState } from '../../store'
 import { TeamSelectedPayload } from '../../store/teams/types'
 import { selectTeam, clearSelected } from '../../store/teams/actions'
-import { darken, transparentize } from '../../../node_modules/polished'
-import { Themed } from '../../../node_modules/react-emotion'
 import DataTable from '../../components/layout/DataTable'
+import {
+  TeamInfobox,
+  TeamInfoboxBlurBackground,
+  TeamInfoboxInner,
+  TeamLogo,
+  TeamInfoboxHeading,
+  TeamName
+} from '../../components/teams/TeamInfobox'
+import { TeamStats, TeamStatsInner, StatItem, StatHeading, StatNumber } from '../../components/teams/TeamStats'
 
 // Separate state props + dispatch props to their own interfaces.
 interface PropsFromState {
@@ -67,6 +74,7 @@ class ShowTeamsPage extends React.Component<AllProps> {
               <React.Fragment>
                 {selected.detail && (
                   <TeamInfobox>
+                    <TeamInfoboxBlurBackground src={selected.detail.logo_url} />
                     <TeamInfoboxInner>
                       {selected.detail.logo_url && <TeamLogo src={selected.detail.logo_url} alt={selected.detail.tag} />}
                       <TeamInfoboxHeading>
@@ -100,7 +108,9 @@ class ShowTeamsPage extends React.Component<AllProps> {
                         .map(player => (
                           <tr key={player.account_id}>
                             <PlayerDetail>
-                              <PlayerIcon src={formatPlayerIcon(player.account_id)} alt={player.name} />
+                              <PlayerIcon>
+                                <img src={formatPlayerIcon(player.account_id)} alt={player.name} />
+                              </PlayerIcon>
                               <PlayerName>{player.name}</PlayerName>
                             </PlayerDetail>
                             <td>{player.games_played}</td>
@@ -146,106 +156,6 @@ const Wrapper = styled('div')`
   position: relative;
 `
 
-const TeamInfobox = styled('div')`
-  position: relative;
-  background: ${props => transparentize(0.1, props.theme.colors.black)};
-  overflow: hidden;
-  border-radius: 8px;
-  color: ${props => darken(0.25, props.theme.colors.white)};
-`
-
-const TeamInfoboxInner = styled('div')`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  padding: 3rem;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 125px inset;
-  z-index: 2;
-
-  @media (min-width: ${props => props.theme.breakpoints.lg}) {
-    flex-direction: row;
-  }
-`
-
-const TeamLogo = styled('img')`
-  display: block;
-  flex-shrink: 0;
-  width: 180px;
-  height: 128px;
-  padding: 1rem;
-  background-color: ${props => transparentize(0.25, props.theme.colors.tableOdd)};
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 12px 32px;
-  object-fit: contain;
-  border-radius: 16px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgba(0, 0, 0, 0.3);
-  border-image: initial;
-`
-
-const TeamInfoboxHeading = styled('div')`
-  flex: 1 1 100%;
-  margin: 1.5rem 0 0;
-  text-align: center;
-
-  @media (min-width: ${props => props.theme.breakpoints.lg}) {
-    margin: 0 1.5rem;
-    text-align: left;
-  }
-`
-
-const TeamName = styled('h1')`
-  margin: 0;
-  color: ${props => props.theme.colors.white};
-  font-weight: 500;
-`
-
-const TeamStats = styled('div')`
-  display: block;
-  max-width: 340px;
-  margin: 1.5rem 0 0;
-  background: rgba(0, 0, 0, 0.45);
-  border-radius: 8px;
-  padding: 12px;
-
-  @media (min-width: ${props => props.theme.breakpoints.lg}) {
-    margin: 0;
-    flex: 1 0 340px;
-  }
-`
-
-const TeamStatsInner = styled('div')`
-  display: flex;
-`
-
-const StatItem = styled('div')`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 1 1 0;
-  padding: 0 1rem;
-  font-size: 0.8rem;
-`
-
-const StatHeading = styled('h4')`
-  margin: 0;
-  margin-bottom: 0.2rem;
-  font-size: 1rem;
-`
-
-interface StatNumberProps {
-  attr?: 'win' | 'loss'
-}
-
-const StatNumber = styled('p')`
-  margin: 0;
-  font-size: 1.5rem;
-  color: ${(props: Themed<StatNumberProps, Theme>) =>
-    // eslint-disable-next-line no-nested-ternary
-    props.attr ? (props.attr === 'win' ? props.theme.colors.attrs.agi : props.theme.colors.attrs.str) : undefined};
-`
-
 const TableWrapper = styled('div')`
   position: relative;
   max-width: ${props => props.theme.widths.md};
@@ -260,9 +170,17 @@ const PlayerDetail = styled('td')`
   align-items: center;
 `
 
-const PlayerIcon = styled('img')`
+const PlayerIcon = styled('div')`
+  position: relative;
   width: 32px;
   height: 32px;
+
+  img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 `
 
 const PlayerName = styled('div')`

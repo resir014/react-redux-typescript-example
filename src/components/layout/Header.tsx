@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { NavLink } from 'react-router-dom'
-import { css } from 'emotion'
 import styled from '../../utils/styled'
 import LayoutContainer from '../../containers/LayoutContainer'
 import Container from './Container'
@@ -42,10 +41,10 @@ const HeaderNav = styled('nav')`
 
 const HeaderNavLink = styled(NavLink)`
   margin: 0 1rem;
-`
 
-const HeaderLinkActive = css`
-  text-decoration: underline;
+  &.is-active {
+    text-decoration: underline;
+  }
 `
 
 const HeaderRight = styled('div')`
@@ -88,13 +87,13 @@ const Header: React.SFC<HeaderProps> = ({ title }) => (
         <Title>{title}</Title>
       </HeaderLeft>
       <HeaderNav>
-        <HeaderNavLink exact to="/" activeClassName={HeaderLinkActive}>
+        <HeaderNavLink exact to="/" activeClassName="is-active">
           Home
         </HeaderNavLink>
-        <HeaderNavLink to="/heroes" activeClassName={HeaderLinkActive}>
+        <HeaderNavLink to="/heroes" activeClassName="is-active">
           Heroes
         </HeaderNavLink>
-        <HeaderNavLink to="/teams" activeClassName={HeaderLinkActive}>
+        <HeaderNavLink to="/teams" activeClassName="is-active">
           Teams
         </HeaderNavLink>
       </HeaderNav>
