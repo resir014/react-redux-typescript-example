@@ -12,7 +12,7 @@ import 'typeface-ibm-plex-sans'
 // Normally you would use browser history.
 const history = createHashHistory()
 
-const initialState = window.initialReduxState
+const initialState = window.INITIAL_REDUX_STATE
 const store = configureStore(history, initialState)
 
 ReactDOM.render(<Main store={store} history={history} />, document.getElementById('root'))

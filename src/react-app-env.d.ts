@@ -1,8 +1,6 @@
-/* eslint-disable spaced-comment */
-import { ApplicationState } from './store'
-
+/* eslint-disable spaced-comment, @typescript-eslint/no-explicit-any */
 /// <reference types="react-scripts" />
 
 interface Window {
-  initialReduxState: ApplicationState
+  INITIAL_REDUX_STATE: any
 }
