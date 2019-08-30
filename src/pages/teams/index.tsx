@@ -24,7 +24,7 @@ interface PropsFromState {
 
 // We can use `typeof` here to map our dispatch types to the props, like so.
 interface PropsFromDispatch {
-  fetchRequest: typeof fetchRequest
+  fetchTeams: typeof fetchRequest
 }
 
 // Combine both state + dispatch props - as well as any props we want to pass - in a union type.
@@ -32,10 +32,10 @@ type AllProps = PropsFromState & PropsFromDispatch
 
 class TeamsIndexPage extends React.Component<AllProps> {
   public componentDidMount() {
-    const { data } = this.props
+    const { data, fetchTeams } = this.props
 
     if (data.length === 0) {
-      this.props.fetchRequest()
+      fetchTeams()
     }
   }
 
@@ -106,7 +106,7 @@ const mapStateToProps = ({ teams }: ApplicationState) => ({
 // mapDispatchToProps is especially useful for constraining our actions to the connected component.
 // You can access these via `this.props`.
 const mapDispatchToProps = {
-  fetchRequest
+  fetchTeams: fetchRequest
 }
 
 // Now let's connect our component!

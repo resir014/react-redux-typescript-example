@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { createHashHistory } from 'history'
+import { createBrowserHistory } from 'history'
 
 import Main from './main'
 import * as serviceWorker from './serviceWorker'
@@ -10,9 +10,9 @@ import 'typeface-ibm-plex-sans'
 
 // We use hash history because this example is going to be hosted statically.
 // Normally you would use browser history.
-const history = createHashHistory()
+const history = createBrowserHistory()
 
-const initialState = window.initialReduxState
+const initialState = window.INITIAL_REDUX_STATE
 const store = configureStore(history, initialState)
 
 ReactDOM.render(<Main store={store} history={history} />, document.getElementById('root'))

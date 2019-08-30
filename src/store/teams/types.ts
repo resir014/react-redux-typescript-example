@@ -26,13 +26,13 @@ export interface TeamSelectedPayload {
   players: Player[]
 }
 
-// Use `const enum`s for better autocompletion of action type names. These will
+// Use `enum`s for better autocompletion of action type names. These will
 // be compiled away leaving only the final value in your compiled code.
 //
 // Define however naming conventions you'd like for your action types, but
 // personally, I use the `@@context/ACTION_TYPE` convention, to follow the convention
 // of Redux's `@@INIT` action.
-export const enum TeamsActionTypes {
+export enum TeamsActionTypes {
   FETCH_REQUEST = '@@teams/FETCH_REQUEST',
   FETCH_SUCCESS = '@@teams/FETCH_SUCCESS',
   FETCH_ERROR = '@@teams/FETCH_ERROR',

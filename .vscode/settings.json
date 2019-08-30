@@ -11,7 +11,6 @@
     "public/**": true,
     "node_modules/**": true
   },
-  "prettier.eslintIntegration": true,
   /* Disable this to stop ESLint Output window diagnostics */
   "eslint.trace.server": "messages",
   "eslint.autoFixOnSave": true,

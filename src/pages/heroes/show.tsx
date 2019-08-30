@@ -33,7 +33,7 @@ interface PropsFromState {
 
 // We can use `typeof` here to map our dispatch types to the props, like so.
 interface PropsFromDispatch {
-  fetchRequest: typeof fetchRequest
+  fetchHeroes: typeof fetchRequest
 }
 
 interface RouteParams {
@@ -61,10 +61,10 @@ class ShowHeroesPage extends React.Component<AllProps, State> {
   }
 
   public componentDidMount() {
-    const { data } = this.props
+    const { data, fetchHeroes } = this.props
 
     if (!data || data.length === 0) {
-      this.props.fetchRequest()
+      fetchHeroes()
     }
   }
 
@@ -183,7 +183,7 @@ const mapStateToProps = ({ heroes }: ApplicationState) => ({
 // mapDispatchToProps is especially useful for constraining our actions to the connected component.
 // You can access these via `this.props`.
 const mapDispatchToProps = {
-  fetchRequest
+  fetchHeroes: fetchRequest
 }
 
 // Now let's connect our component!

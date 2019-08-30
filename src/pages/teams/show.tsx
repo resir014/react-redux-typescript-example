@@ -11,7 +11,7 @@ import LoadingSpinner from '../../components/data/LoadingSpinner'
 
 import { ApplicationState } from '../../store'
 import { TeamSelectedPayload } from '../../store/teams/types'
-import { selectTeam, clearSelected } from '../../store/teams/actions'
+import { selectTeam as selectTeamAction, clearSelected as clearSelectedAction } from '../../store/teams/actions'
 import DataTable from '../../components/layout/DataTable'
 import {
   TeamInfobox,
@@ -31,8 +31,8 @@ interface PropsFromState {
 }
 
 interface PropsFromDispatch {
-  selectTeam: typeof selectTeam
-  clearSelected: typeof clearSelected
+  selectTeam: typeof selectTeamAction
+  clearSelected: typeof clearSelectedAction
 }
 
 interface RouteParams {
@@ -46,14 +46,16 @@ const formatPlayerIcon = (accountId: number) => `https://www.opendota.com/assets
 
 class ShowTeamsPage extends React.Component<AllProps> {
   public componentDidMount() {
-    const { match } = this.props
+    const { match, selectTeam } = this.props
 
-    this.props.selectTeam(match.params.id)
+    selectTeam(match.params.id)
   }
 
   public componentWillUnmount() {
+    const { clearSelected } = this.props
+
     // clear selected team state before leaving the page
-    this.props.clearSelected()
+    clearSelected()
   }
 
   public render() {
@@ -71,7 +73,7 @@ class ShowTeamsPage extends React.Component<AllProps> {
               </LoadingOverlay>
             )}
             {selected && (
-              <React.Fragment>
+              <>
                 {selected.detail && (
                   <TeamInfobox>
                     <TeamInfoboxBlurBackground src={selected.detail.logo_url} />
@@ -120,7 +122,7 @@ class ShowTeamsPage extends React.Component<AllProps> {
                     </DataTable>
                   </TableWrapper>
                 )}
-              </React.Fragment>
+              </>
             )}
           </Wrapper>
         </Container>
@@ -140,9 +142,9 @@ const mapStateToProps = ({ teams }: ApplicationState) => ({
 
 // mapDispatchToProps is especially useful for constraining our actions to the connected component.
 // You can access these via `this.props`.
-const mapDispatchToProps = {
-  selectTeam,
-  clearSelected
+const mapDispatchToProps: PropsFromDispatch = {
+  selectTeam: selectTeamAction,
+  clearSelected: clearSelectedAction
 }
 
 // Now let's connect our component!

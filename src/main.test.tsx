@@ -1,16 +1,11 @@
-import * as React from 'react'
-import { shallow } from 'enzyme'
+import React from 'react'
+import { render } from '@testing-library/react'
 
-const creatButton = (clickHandler: any) => <input type="button" value="a button" onClick={clickHandler} />
+function Button({ children }: React.PropsWithChildren<{}>) {
+  return <button type="button">{children}</button>
+}
 
-it('test name', () => {
-  const b = shallow(creatButton(() => {}))
-  expect(b.find('input').get(0).props.value).toBe('a button')
-})
-
-it('test click', () => {
-  const mockFn = jest.fn()
-  const tree = shallow(creatButton(mockFn))
-  tree.simulate('click')
-  expect(mockFn).toHaveBeenCalled()
+test('renders without crashing', () => {
+  const { container } = render(<Button>hello</Button>)
+  expect(container).toBeInTheDocument()
 })

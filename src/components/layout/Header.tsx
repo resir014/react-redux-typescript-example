@@ -100,10 +100,10 @@ const Header: React.SFC<HeaderProps> = ({ title }) => (
       <HeaderRight>
         <LayoutContainer>
           {({ theme, setTheme }) => (
-            <React.Fragment>
+            <>
               <CurrentTheme>Current theme: {theme}</CurrentTheme>
               <ThemeSwitcherButton onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>Switch theme</ThemeSwitcherButton>
-            </React.Fragment>
+            </>
           )}
         </LayoutContainer>
       </HeaderRight>
