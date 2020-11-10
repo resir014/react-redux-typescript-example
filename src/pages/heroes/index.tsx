@@ -33,8 +33,7 @@ const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT || 'https://api.opendota
 
 class HeroesIndexPage extends React.Component<AllProps> {
   public componentDidMount() {
-    const { fetchRequest: fr } = this.props
-    fr()
+    this.props.fetchRequest();
   }
 
   private renderData() {
