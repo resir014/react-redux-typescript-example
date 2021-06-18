@@ -78,7 +78,7 @@ const ThemeSwitcherButton = styled('button')`
     background-color: transparent;
     color: ${props => props.theme.colors.white};
   }
-`
+` 
 
 const Header: React.SFC<HeaderProps> = ({ title }) => (
   <Wrapper>

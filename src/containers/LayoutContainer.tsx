@@ -32,7 +32,7 @@ const LayoutContainer: React.FC<LayoutContainerRenderProps> = ({ render, childre
 
   // Create the `setTheme` handler. We use the `dispatch` we got from `useDispatch()` to create said selector.
   const setTheme = (color: ThemeColors) => dispatch(layoutActions.setTheme(color))
-
+  console.log(localStorage.getItem('theme'))
   // Create a render/children props wrapper with the above variables set as a callback.
   if (render) {
     return render({ theme, setTheme })
