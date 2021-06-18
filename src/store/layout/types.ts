@@ -14,5 +14,5 @@ export enum LayoutActionTypes {
 // Declare state types with `readonly` modifier to get compile time immutability.
 // https://github.com/piotrwitek/react-redux-typescript-guide#state-with-type-level-immutability
 export interface LayoutState {
-  readonly theme: ThemeColors
+   theme: ThemeColors
 }

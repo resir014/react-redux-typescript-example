@@ -9,4 +9,7 @@ import { LayoutActionTypes, ThemeColors } from './types'
 // Remember, you can also pass parameters into an action creator. Make sure to
 // type them properly as well.
 
-export const setTheme = (theme: ThemeColors) => action(LayoutActionTypes.SET_THEME, theme)
+export const setTheme = (theme: ThemeColors) => {
+  localStorage.setItem('theme', JSON.stringify(theme)) // setting the theme to localState
+  return action(LayoutActionTypes.SET_THEME, theme)
+}
