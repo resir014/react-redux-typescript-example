@@ -10,7 +10,7 @@
     "connected-react-router": "^6.5.2",
     "emotion-theming": "^10.0.14",
     "history": "^4.9.0",
-    "moment": "^2.22.2",
+    "moment": "^2.29.4",
     "polished": "^3.4.1",
     "prop-types": "^15.0.0",
     "react": "^16.9.0",
